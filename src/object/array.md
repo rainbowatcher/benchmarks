@@ -1,0 +1,1 @@
+- `for of` is the fastest way for array concat

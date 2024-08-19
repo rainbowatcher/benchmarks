@@ -1,0 +1,28 @@
+{
+    "type": "module",
+    "scripts": {
+        "test": "vitest",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "fast-glob": "^3.3.2",
+        "globby": "^14.0.2",
+        "immer": "^10.1.1",
+        "immutable": "^4.3.7",
+        "lodash": "^4.17.21",
+        "memfs": "^4.11.1",
+        "tinyglobby": "^0.2.2",
+        "vitest": "^2.0.5"
+    },
+    "devDependencies": {
+        "@rainbowatcher/eslint-config": "^0.13.0",
+        "@rainbowatcher/eslint-config-ignore": "^0.13.0",
+        "@rainbowatcher/eslint-config-js": "^0.13.0",
+        "@rainbowatcher/eslint-config-json": "^0.13.0",
+        "@rainbowatcher/eslint-config-md": "^0.13.0",
+        "@rainbowatcher/eslint-config-prettier": "^0.13.0",
+        "@rainbowatcher/eslint-config-ts": "^0.13.0",
+        "@types/lodash": "^4.17.7",
+        "@types/node": "^22.2.0"
+    }
+}
