@@ -1,6 +1,6 @@
 import { fs, vol } from "memfs"
 import {
-    describe, expect, test, vi,
+    describe, expect, it, vi,
 } from "vitest"
 import {
     searchFileAsync, searchFileAsync1, searchFileAsyncFg, searchFileAsyncTg, searchFileSync, searchFileSyncFg, searchFileSyncTg,
@@ -103,43 +103,38 @@ describe("searchFile", () => {
 
     vol.fromNestedJSON(nested)
 
-    test("searchFileSync", () => {
+    it("searchFileSync", () => {
         expect(searchFileSync(dir, fileToSearch).sort()).toStrictEqual(expected)
     })
 
-    test("searchFileAsync", async () => {
+    it("searchFileAsync", async () => {
         // eslint-disable-next-line unicorn/no-await-expression-member
-        expect((await searchFileAsync(dir, fileToSearch)).sort()).toEqual(expected)
+        expect((await searchFileAsync(dir, fileToSearch)).sort()).toStrictEqual(expected)
     })
 
-    test("searchFileAsync1", async () => {
+    it("searchFileAsync1", async () => {
         // eslint-disable-next-line unicorn/no-await-expression-member
         expect((await searchFileAsync1(dir, fileToSearch)).sort()).toStrictEqual(expected)
     })
 
-    test("searchFileAsync2", async () => {
+    it("searchFileAsync2", async () => {
         // eslint-disable-next-line unicorn/no-await-expression-member
         expect((await searchFileAsync2(dir, fileToSearch)).sort()).toStrictEqual(expected)
     })
 
-    test("searchFileAsync3", async () => {
+    it("searchFileAsync3", async () => {
         // eslint-disable-next-line unicorn/no-await-expression-member
         expect((await searchFileAsync3(dir, fileToSearch)).sort()).toStrictEqual(expected)
     })
 
-    test("searchFileSyncFg", () => {
+    it("searchFileSyncFg", () => {
         // @ts-expect-error type missmatch
         expect(searchFileSyncFg(dir, fileToSearch, mfs).sort()).toStrictEqual(expected)
     })
 
-    // test("searchFileSyncFg", async () => {
-    //     // @ts-expect-error type missmatch
-    //     // eslint-disable-next-line unicorn/no-await-expression-member
-    //     expect((await searchFileAsyncFg(dir, fileToSearch, mfs)).sort()).toStrictEqual(expected)
-    // })
-
-    // test("searchFileAsyncTg", async () => {
-    //     // eslint-disable-next-line unicorn/no-await-expression-member
-    //     expect((await searchFileAsyncTg(dir, fileToSearch)).sort()).toStrictEqual(expected)
-    // })
+    it("searchFileAsyncFg", async () => {
+        // @ts-expect-error type missmatch
+        const arr = await searchFileAsyncFg(dir, fileToSearch, mfs)
+        expect(arr.sort()).toStrictEqual(expected)
+    })
 })
